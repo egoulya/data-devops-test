@@ -1,1 +1,2 @@
-ls -R /usr/share/man/man?/*config*
+ls /usr/share/man/man?/*config*
+ls /usr/share/man/man{1,7}/*system*
