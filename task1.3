@@ -1,0 +1,39 @@
+[hero@HeroWithin devops]$ cat /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Fri Oct 30 14:22:27 2020
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+UUID=9cff3d69-3769-4ad9-8460-9c54050583f9 /                       xfs     defaults        0 0
+
+[hero@HeroWithin devops]$ tail /etc/fstab -n 2
+#
+UUID=9cff3d69-3769-4ad9-8460-9c54050583f9 /                       xfs     defaults        0 0
+
+[hero@HeroWithin devops]$ head /etc/yum.conf -n 7
+[main]
+cachedir=/var/cache/yum/$basearch/$releasever
+keepcache=0
+debuglevel=2
+logfile=/var/log/yum.log
+exactarch=1
+obsoletes=1
+
+[hero@HeroWithin devops]$ wc /etc/fstab
+  9  42 313 /etc/fstab
+
+[hero@HeroWithin devops]$ head /etc/fstab -n 20
+
+#
+# /etc/fstab
+# Created by anaconda on Fri Oct 30 14:22:27 2020
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+UUID=9cff3d69-3769-4ad9-8460-9c54050583f9 /                       xfs     defaults        0 0
+
+# Nothing happens if we set line count greater than actual lines contained in file

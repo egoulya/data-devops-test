@@ -1,0 +1,86 @@
+[hero@HeroWithin ~]$ mkdir new in-process processed in-process/tread{0..2}
+
+[hero@HeroWithin ~]$ ls
+devops  in-process  new  processed  token
+
+[hero@HeroWithin ~]$ cd in-process/
+
+[hero@HeroWithin in-process]$ ls
+tread0  tread1  tread2
+
+[hero@HeroWithin in-process]$ cd ~/new
+
+[hero@HeroWithin new]$ touch data{00..99}
+
+[hero@HeroWithin new]$ ls
+data00  data07  data14  data21  data28  data35  data42  data49  data56  data63  data70  data77  data84  data91  data98
+data01  data08  data15  data22  data29  data36  data43  data50  data57  data64  data71  data78  data85  data92  data99
+data02  data09  data16  data23  data30  data37  data44  data51  data58  data65  data72  data79  data86  data93
+data03  data10  data17  data24  data31  data38  data45  data52  data59  data66  data73  data80  data87  data94
+data04  data11  data18  data25  data32  data39  data46  data53  data60  data67  data74  data81  data88  data95
+data05  data12  data19  data26  data33  data40  data47  data54  data61  data68  data75  data82  data89  data96
+data06  data13  data20  data27  data34  data41  data48  data55  data62  data69  data76  data83  data90  data97
+
+[hero@HeroWithin new]$ cp data{00..33} ~/in-process/tread0/
+
+[hero@HeroWithin new]$ cp data{34..66} ~/in-process/tread1/
+
+[hero@HeroWithin new]$ cp data{67..99} ~/in-process/tread2/
+
+[hero@HeroWithin new]$ ls -R ~/in-process/
+/home/hero/in-process/:
+tread0  tread1  tread2
+
+/home/hero/in-process/tread0:
+data00  data03  data06  data09  data12  data15  data18  data21  data24  data27  data30  data33
+data01  data04  data07  data10  data13  data16  data19  data22  data25  data28  data31
+data02  data05  data08  data11  data14  data17  data20  data23  data26  data29  data32
+
+/home/hero/in-process/tread1:
+data34  data37  data40  data43  data46  data49  data52  data55  data58  data61  data64
+data35  data38  data41  data44  data47  data50  data53  data56  data59  data62  data65
+data36  data39  data42  data45  data48  data51  data54  data57  data60  data63  data66
+
+/home/hero/in-process/tread2:
+data67  data70  data73  data76  data79  data82  data85  data88  data91  data94  data97
+data68  data71  data74  data77  data80  data83  data86  data89  data92  data95  data98
+data69  data72  data75  data78  data81  data84  data87  data90  data93  data96  data99
+
+[hero@HeroWithin new]$ cd ~/in-process/
+
+[hero@HeroWithin in-process]$ mv tread?/* ~/processed/
+
+[hero@HeroWithin in-process]$ ls -R
+.:
+tread0  tread1  tread2
+
+./tread0:
+
+./tread1:
+
+./tread2:
+
+[hero@HeroWithin in-process]$ ls ~/processed/
+data00  data07  data14  data21  data28  data35  data42  data49  data56  data63  data70  data77  data84  data91  data98
+data01  data08  data15  data22  data29  data36  data43  data50  data57  data64  data71  data78  data85  data92  data99
+data02  data09  data16  data23  data30  data37  data44  data51  data58  data65  data72  data79  data86  data93
+data03  data10  data17  data24  data31  data38  data45  data52  data59  data66  data73  data80  data87  data94
+data04  data11  data18  data25  data32  data39  data46  data53  data60  data67  data74  data81  data88  data95
+data05  data12  data19  data26  data33  data40  data47  data54  data61  data68  data75  data82  data89  data96
+data06  data13  data20  data27  data34  data41  data48  data55  data62  data69  data76  data83  data90  data97
+
+[hero@HeroWithin in-process]$ ls ~/new/
+data00  data07  data14  data21  data28  data35  data42  data49  data56  data63  data70  data77  data84  data91  data98
+data01  data08  data15  data22  data29  data36  data43  data50  data57  data64  data71  data78  data85  data92  data99
+data02  data09  data16  data23  data30  data37  data44  data51  data58  data65  data72  data79  data86  data93
+data03  data10  data17  data24  data31  data38  data45  data52  data59  data66  data73  data80  data87  data94
+data04  data11  data18  data25  data32  data39  data46  data53  data60  data67  data74  data81  data88  data95
+data05  data12  data19  data26  data33  data40  data47  data54  data61  data68  data75  data82  data89  data96
+data06  data13  data20  data27  data34  data41  data48  data55  data62  data69  data76  data83  data90  data97
+
+[hero@HeroWithin in-process]$ if [ $(ls ~/processed/ | wc -l) -eq $(ls ~/new/ | wc -l) ]; then rm ~/new/*; fi
+
+[hero@HeroWithin in-process]$ ls ~/new/
+
+[hero@HeroWithin in-process]$
+

@@ -1,0 +1,34 @@
+[hero@HeroWithin devops]$ find /usr/share/man/ -name *help*
+/usr/share/man/man1/gitremote-helpers.1.gz
+/usr/share/man/man1/help.1.gz
+/usr/share/man/man1/git-help.1.gz
+/usr/share/man/man8/pwhistory_helper.8.gz
+/usr/share/man/man8/mkhomedir_helper.8.gz
+/usr/share/man/man8/ssh-pkcs11-helper.8.gz
+
+[hero@HeroWithin devops]$ find /usr/share/man/ -name conf*
+/usr/share/man/man5/config.5ssl.gz
+/usr/share/man/man5/config-util.5.gz
+
+[hero@HeroWithin devops]$
+
+
+# actions: -delete -print0 -printf FORMAT -fprintf FILE FORMAT -print
+#       -fprint0 FILE -fprint FILE -ls -fls FILE -prune -quit
+#       -exec COMMAND ; -exec COMMAND {} + -ok COMMAND ;
+#       -execdir COMMAND ; -execdir COMMAND {} + -okdir COMMAND ;
+
+-delete - deteles files found
+-print0 - prints full file name, adds null characther at the end
+-print - prints full file name, and splits them with \n
+-fprint0  - prints full file name, adds null characther at the end, writes output to file
+-fprint - prints file name to specified file
+-ls - prints file in "ls -dils" format
+-fls - prints file in "ls -dils" format, writes output to file
+-prune - doesnt search in the file, if file is a directory
+-quit - exits process after first file found, but executes all commands to it
+-exec - runs specified command for files found
+-execdir - runs specified command for files found, but does this from directory where files are contained
+-ok - runs specified command for files found, but asks user for confirmation
+
+find /home/hero/test/ -name file* -delete - will delete files (like file1, file2, and etc.)
