@@ -1,0 +1,46 @@
+[hero@HeroWithin task2]$ ls
+task2.2.sh
+
+[hero@HeroWithin task2]$ bash task2.2.sh
+
+[hero@HeroWithin task2]$ ls
+err.log  task2.2.sh
+
+[hero@HeroWithin task2]$ cat err.log
+
+[hero@HeroWithin task2]$ ls ~/
+devops  in-process  new  processed  task2  task2.1.output  task2.txt  token
+
+[hero@HeroWithin task2]$ bash task2.2.sh
+Error: File already exists
+
+[hero@HeroWithin task2]$ cat err.log
+Error: File already exists
+
+[hero@HeroWithin task2]$ mv task2.2.sh ~/
+
+[hero@HeroWithin task2]$ cd ..
+
+[hero@HeroWithin ~]$ bash task2.2.sh
+Error: Permission denied
+
+[hero@HeroWithin ~]$ cat err.log
+Error: Permission denied
+
+[hero@HeroWithin ~]$ cat task2.2.sh
+#!/bin/bash
+
+exec 2>err.log
+parentdir="$(dirname "$(pwd)")"
+if [[ $(ls "$parentdir" | grep "task2.txt") != "" ]]
+then
+  echo "Error: File already exists" >&2
+  echo "Error: File already exists"
+else
+ve=$(touch "$parentdir"/task2.txt 2>&1 > /dev/null)
+if [[ $(echo $ve | grep 'Permission') != "" ]]
+then
+  echo "Error: Permission denied"
+  echo "Error: Permission denied" >&2
+fi
+fi
