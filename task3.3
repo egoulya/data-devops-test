@@ -1,0 +1,8 @@
+[hero@HeroWithin ch3]$ awk 'BEGIN{ip_arr[$1]=0}{ip_arr[$1]+=$10}END{for (ip in ip_arr) print ip ":\t" ip_arr[ip] " bytes"}' access.log
+...
+204.15.145.39:  13020 bytes
+157.55.39.148:  10184644 bytes
+159.89.187.19:  34198293 bytes
+94.154.220.93:  10466 bytes
+145.253.118.26: 26209910 bytes
+...

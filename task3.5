@@ -1,0 +1,1 @@
+[hero@HeroWithin ch3]$ unset x; declare -Ax; while read line; do word=$(echo $line | sed 's/[^"["]*//'); if [[ $line != "" ]]; then echo "ip $word" >> dump; fi; done < access.log; mv dump access.log
