@@ -1,0 +1,66 @@
+[hero@HeroWithin ~]$ sudo groupadd bakerstreet
+
+[hero@HeroWithin ~]$ sudo groupadd scotlandyard
+
+[hero@HeroWithin ~]$ sudo useradd -G bakerstreet holmes
+
+[hero@HeroWithin ~]$ sudo useradd -G bakerstreet watson
+
+[hero@HeroWithin ~]$ sudo passwd holmes
+Changing password for user holmes.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+
+[hero@HeroWithin ~]$ sudo passwd watson
+Changing password for user watson.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+
+[hero@HeroWithin ~]$ sudo useradd -G scotlandyard lestrade
+
+[hero@HeroWithin ~]$ sudo useradd -G scotlandyard gregson
+
+[hero@HeroWithin ~]$ sudo useradd -G scotlandyard jones
+
+[hero@HeroWithin ~]$ sudo passwd lestrade
+Changing password for user lestrade.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+
+[hero@HeroWithin ~]$ sudo passwd gregson
+Changing password for user gregson.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+
+[hero@HeroWithin ~]$ sudo passwd jones
+Changing password for user jones.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+
+[hero@HeroWithin ~]$ sudo mkdir /share
+
+[hero@HeroWithin ~]$ sudo mkdir /share/cases
+
+[hero@HeroWithin cases]$ sudo chown -R :bakerstreet /share/cases/
+
+[hero@HeroWithin cases]$ sudo setfacl -Rm g:scotlandyard:rwx,g:bakerstreet:rwx,u:jones:rx,o::- /share/cases
+
+[hero@HeroWithin cases]$ sudo getfacl /share/cases
+getfacl: Removing leading '/' from absolute path names
+# file: share/cases
+# owner: root
+# group: bakerstreet
+user::rwx
+user:jones:r-x
+group::r-x
+group:scotlandyard:rwx
+group:bakerstreet:rwx
+mask::rwx
+other::---
+
+[hero@HeroWithin cases]$

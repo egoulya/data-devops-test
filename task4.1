@@ -1,0 +1,24 @@
+[hero@HeroWithin ~]$ sudo groupadd sales -g 4000
+
+[hero@HeroWithin ~]$ sudo useradd -G sales bob
+
+[hero@HeroWithin ~]$ sudo useradd -G sales alice
+
+[hero@HeroWithin ~]$ sudo useradd -G sales eve 
+
+[hero@HeroWithin ~]$ sudo passwd bob
+
+[hero@HeroWithin ~]$ sudo passwd alice
+
+[hero@HeroWithin ~]$ sudo passwd eve
+
+[hero@HeroWithin ~]$ sudo nano /etc/login.defs
+...
+PASS_MAX_DAYS   30
+...
+
+[hero@HeroWithin ~]$ for user in $(sudo groupmems -g "sales" -l); do sudo chage -E $(date +%F -d "+90 days") $user; done
+
+[hero@HeroWithin ~]$ sudo chage -m 1 -M 15 bob
+
+[hero@HeroWithin ~]$ for user in $(sudo groupmems -g "sales" -l); do sudo passwd --expire $user; done
