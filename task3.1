@@ -1,0 +1,4 @@
+[hero@HeroWithin ch3]$ cat access.log | grep -Po '\"\s\".+\"$' | grep -Po '[^\"]{2,}' | awk -F '"' '{arr[$1]+=1}END{for (line in arr) print arr[line], line}' | uniq | sort -k1n | tail -n 3 | head -n 1
+17036 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+
+[hero@HeroWithin ch3]$
